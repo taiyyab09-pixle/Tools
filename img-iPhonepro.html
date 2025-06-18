@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to convert and optimize images for iPhone quality. Convert PDF to images, optimize GIFs, and enhance picture quality instantly.">
+    <meta name="keywords" content="image converter, PDF to image, GIF optimizer, iPhone quality images, photo enhancer">
+    <meta name="author" content="ImageConverterPro">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Image Converter Pro - Optimize Images for iPhone Quality">
+    <meta property="og:description" content="Free online tool to convert and optimize images for iPhone quality.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.imageconverterpro.com">
+    <meta property="og:image" content="https://www.imageconverterpro.com/preview.jpg">
+    <link rel="canonical" href="https://www.imageconverterpro.com">
+    
+    <title>Image Converter Pro | Optimize Images for iPhone Quality</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --medium-gray: #757575;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+        
+        main {
+            padding: 2rem 0;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .converter-tool {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-header h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-header p {
+            color: var(--medium-gray);
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--medium-gray);
+            border-radius: 8px;
+            padding: 3rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1.5rem;
+            background-color: var(--light-gray);
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+        
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .upload-area p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .upload-area .browse-btn {
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        #file-input {
+            display: none;
+        }
+        
+        .options-panel {
+            margin-bottom: 2rem;
+        }
+        
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .option-group h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-gray);
+        }
+        
+        .radio-options, .checkbox-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input, .checkbox-option input {
+            margin-right: 0.5rem;
+        }
+        
+        .slider-container {
+            margin-top: 1rem;
+        }
+        
+        .slider-container label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .slider-container input[type="range"] {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            background: #ddd;
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .slider-value {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3367d6;
+        }
+        
+        .btn-secondary {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .preview-section {
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .preview-section h3 {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .preview-item {
+            flex: 1;
+            min-width: 300px;
+            max-width: 100%;
+        }
+        
+        .preview-item h4 {
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .preview-image {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .download-btn {
+            display: block;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+        
+        .ad-section {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .ad-container {
+            background-color: var(--light-gray);
+            padding: 1rem;
+            border-radius: 5px;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 0.8rem;
+        }
+        
+        .feature-card p {
+            color: var(--medium-gray);
+        }
+        
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #555;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .preview-container {
+                flex-direction: column;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .converter-tool {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Progress bar */
+        .progress-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            margin: 1rem 0;
+            display: none;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            border-radius: 5px;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Image<span>Converter</span>Pro</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h1>Convert & Optimize Images for iPhone Quality</h1>
+            <p>Free online tool to convert PDF to images, optimize GIFs, and enhance your photos to iPhone quality in seconds.</p>
+        </section>
+        
+        <!-- Top Ad Section -->
+        <section class="ad-section">
+            <div class="ad-container">
+                <!-- Google AdSense Ad Unit -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+                <!-- ImageConverter_Top_Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </section>
+        
+        <section class="converter-tool">
+            <div class="tool-header">
+                <h2>Image Converter Tool</h2>
+                <p>Upload your image, PDF, or GIF and optimize it for iPhone quality</p>
+            </div>
+            
+            <div class="upload-area" id="uploadArea">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Drag & drop your files here or</p>
+                <p><span class="browse-btn">browse</span> to select files</p>
+                <p class="small">Supports JPG, PNG, GIF, PDF (Max 50MB)</p>
+                <input type="file" id="file-input" accept="image/*,.pdf">
+            </div>
+            
+            <div class="options-panel">
+                <div class="option-group">
+                    <h3>Conversion Options</h3>
+                    <div class="radio-options">
+                        <div class="radio-option">
+                            <input type="radio" id="option-iphone" name="conversion-type" value="iphone" checked>
+                            <label for="option-iphone">iPhone Quality</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="option-pdf" name="conversion-type" value="pdf">
+                            <label for="option-pdf">PDF to Image</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="option-gif" name="conversion-type" value="gif">
+                            <label for="option-gif">GIF Optimizer</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="option-group" id="quality-group">
+                    <h3>Quality Settings</h3>
+                    <div class="slider-container">
+                        <label for="quality-slider">Image Quality: <span id="quality-value">90</span>%</label>
+                        <input type="range" id="quality-slider" min="10" max="100" value="90">
+                    </div>
+                </div>
+                
+                <div class="option-group" id="resolution-group">
+                    <h3>Resolution</h3>
+                    <div class="radio-options">
+                        <div class="radio-option">
+                            <input type="radio" id="res-original" name="resolution" value="original" checked>
+                            <label for="res-original">Original</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="res-hd" name="resolution" value="hd">
+                            <label for="res-hd">HD (1280x720)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="res-fullhd" name="resolution" value="fullhd">
+                            <label for="res-fullhd">Full HD (1920x1080)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="res-4k" name="resolution" value="4k">
+                            <label for="res-4k">4K (3840x2160)</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="option-group" id="format-group">
+                    <h3>Output Format</h3>
+                    <div class="radio-options">
+                        <div class="radio-option">
+                            <input type="radio" id="format-jpg" name="format" value="jpg" checked>
+                            <label for="format-jpg">JPG</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="format-png" name="format" value="png">
+                            <label for="format-png">PNG</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="format-webp" name="format" value="webp">
+                            <label for="format-webp">WebP</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="option-group" id="gif-options" style="display: none;">
+                    <h3>GIF Optimization</h3>
+                    <div class="checkbox-options">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="gif-reduce-colors" name="gif-reduce-colors">
+                            <label for="gif-reduce-colors">Reduce Colors (256 max)</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="gif-reduce-frames" name="gif-reduce-frames">
+                            <label for="gif-reduce-frames">Reduce Frames</label>
+                        </div>
+                    </div>
+                    <div class="slider-container">
+                        <label for="gif-quality-slider">Optimization Level: <span id="gif-quality-value">70</span>%</label>
+                        <input type="range" id="gif-quality-slider" min="10" max="100" value="70">
+                    </div>
+                </div>
+                
+                <div class="option-group" id="pdf-options" style="display: none;">
+                    <h3>PDF Conversion Options</h3>
+                    <div class="checkbox-options">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="pdf-all-pages" name="pdf-all-pages" checked>
+                            <label for="pdf-all-pages">Convert All Pages</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="pdf-separate" name="pdf-separate">
+                            <label for="pdf-separate">Separate Images</label>
+                        </div>
+                    </div>
+                    <div class="slider-container" id="pdf-page-range-container" style="display: none;">
+                        <label for="pdf-page-range">Pages: <span id="pdf-page-range-value">1-1</span></label>
+                        <input type="range" id="pdf-page-range" min="1" max="10" value="1">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <div class="spinner" id="loadingSpinner"></div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="convertBtn">Convert Now</button>
+                <button class="btn btn-secondary" id="resetBtn">Reset</button>
+            </div>
+            
+            <div class="preview-section" id="previewSection">
+                <h3>Your Converted Image</h3>
+                <div class="preview-container">
+                    <div class="preview-item">
+                        <h4>Original</h4>
+                        <img id="originalPreview" class="preview-image" src="" alt="Original image">
+                    </div>
+                    <div class="preview-item">
+                        <h4>Converted</h4>
+                        <img id="convertedPreview" class="preview-image" src="" alt="Converted image">
+                        <a href="#" class="btn btn-primary download-btn" id="downloadBtn">Download</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Middle Ad Section -->
+        <section class="ad-section">
+            <div class="ad-container">
+                <!-- Google AdSense Ad Unit -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+                <!-- ImageConverter_Mid_Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </section>
+        
+        <section class="features">
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>iPhone Quality</h3>
+                <p>Enhance your images to match the high-quality standards of iPhone photography with our advanced algorithms.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-file-pdf"></i>
+                <h3>PDF Conversion</h3>
+                <p>Convert PDF documents to high-quality images with customizable resolution and format options.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-film"></i>
+                <h3>GIF Optimization</h3>
+                <p>Reduce GIF file size while maintaining quality by optimizing colors, frames, and compression.</p>
+            </div>
+        </section>
+        
+        <!-- Bottom Ad Section -->
+        <section class="ad-section">
+            <div class="ad-container">
+                <!-- Google AdSense Ad Unit -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+                <!-- ImageConverter_Bottom_Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ImageConverterPro</h3>
+                    <p>Your free online tool for converting and optimizing images to iPhone quality.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Image Optimization Guide</a></li>
+                        <li><a href="#">iPhone Photography Tips</a></li>
+                        <li><a href="#">File Format Comparison</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ImageConverterPro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+        
+        // File upload handling
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('file-input');
+        
+        uploadArea.addEventListener('click', function() {
+            fileInput.click();
+        });
+        
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '#4285f4';
+            this.style.backgroundColor = 'rgba(66, 133, 244, 0.1)';
+        });
+        
+        uploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '#757575';
+            this.style.backgroundColor = '#f5f5f5';
+        });
+        
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '#757575';
+            this.style.backgroundColor = '#f5f5f5';
+            
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                handleFileSelection();
+            }
+        });
+        
+        fileInput.addEventListener('change', handleFileSelection);
+        
+        function handleFileSelection() {
+            if (fileInput.files && fileInput.files[0]) {
+                const fileName = fileInput.files[0].name;
+                uploadArea.querySelector('p').textContent = `Selected: ${fileName}`;
+                
+                // Preview the original image
+                if (fileInput.files[0].type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('originalPreview').src = e.target.result;
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            }
+        }
+        
+        // Conversion type toggle
+        const conversionTypeRadios = document.querySelectorAll('input[name="conversion-type"]');
+        const gifOptions = document.getElementById('gif-options');
+        const pdfOptions = document.getElementById('pdf-options');
+        
+        conversionTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'gif') {
+                    gifOptions.style.display = 'block';
+                    pdfOptions.style.display = 'none';
+                } else if (this.value === 'pdf') {
+                    gifOptions.style.display = 'none';
+                    pdfOptions.style.display = 'block';
+                } else {
+                    gifOptions.style.display = 'none';
+                    pdfOptions.style.display = 'none';
+                }
+            });
+        });
+        
+        // Quality slider
+        const qualitySlider = document.getElementById('quality-slider');
+        const qualityValue = document.getElementById('quality-value');
+        
+        qualitySlider.addEventListener('input', function() {
+            qualityValue.textContent = this.value;
+        });
+        
+        // GIF quality slider
+        const gifQualitySlider = document.getElementById('gif-quality-slider');
+        const gifQualityValue = document.getElementById('gif-quality-value');
+        
+        gifQualitySlider.addEventListener('input', function() {
+            gifQualityValue.textContent = this.value;
+        });
+        
+        // PDF page range
+        const pdfAllPages = document.getElementById('pdf-all-pages');
+        const pdfPageRangeContainer = document.getElementById('pdf-page-range-container');
+        
+        pdfAllPages.addEventListener('change', function() {
+            pdfPageRangeContainer.style.display = this.checked ? 'none' : 'block';
+        });
+        
+        // Convert button
+        document.getElementById('convertBtn').addEventListener('click', function() {
+            if (!fileInput.files || !fileInput.files[0]) {
+                alert('Please select a file first');
+                return;
+            }
+            
+            // Show loading spinner and progress
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('progressContainer').style.display = 'block';
+            
+            // Simulate conversion process (in a real app, this would be an API call)
+            simulateConversion();
+        });
+        
+        function simulateConversion() {
+            let progress = 0;
+            const progressBar = document.getElementById('progressBar');
+            const progressInterval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    conversionComplete();
+                }
+            }, 200);
+        }
+        
+        function conversionComplete() {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            
+            // In a real app, you would display the actual converted image
+            // For demo purposes, we'll just show the original again
+            document.getElementById('convertedPreview').src = document.getElementById('originalPreview').src;
+            document.getElementById('previewSection').style.display = 'block';
+            
+            // Scroll to preview
+            document.getElementById('previewSection').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Reset button
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            fileInput.value = '';
+            uploadArea.querySelector('p').textContent = 'Drag & drop your files here or';
+            document.getElementById('previewSection').style.display = 'none';
+            document.getElementById('loadingSpinner').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('progressBar').style.width = '0%';
+        });
+        
+        // Download button
+        document.getElementById('downloadBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // In a real app, this would download the actual converted file
+            alert('Download functionality would be implemented here');
+        });
+    </script>
+    
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Image Converter Pro",
+      "url": "https://www.imageconverterpro.com",
+      "description": "Free online tool to convert and optimize images for iPhone quality. Convert PDF to images, optimize GIFs, and enhance picture quality instantly.",
+      "applicationCategory": "ImageConverterApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ImageConverterPro"
+      }
+    }
+    </script>
+    
+    <!-- Google Analytics (optional) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-XXXXX-Y');
+    </script>
+</body>
+</html>
